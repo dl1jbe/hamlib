@@ -5552,8 +5552,9 @@ int kenwood_send_morse(RIG *rig, vfo_t vfo, const char *msg)
             break;
 
         default:
-            /* the command must consist of 28 bytes 0x20 padded */
-            SNPRINTF(morsebuf, sizeof(morsebuf), "KY %-24s", m2);
+            /* the command must consist of 28 bytes with the text
+	     * rigth aligned */
+            SNPRINTF(morsebuf, sizeof(morsebuf), "KY %24s", m2);
 
             for (i = strlen(morsebuf) - 1; i > 0 && morsebuf[i] == ' '; --i)
             {
